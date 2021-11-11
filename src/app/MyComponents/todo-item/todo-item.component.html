@@ -1,4 +1,4 @@
-<div class="my-3">
+<div class="my-3" style="border-bottom: 2px solid;">
   <!-- "todo.title" & "todo.desc" needs to accepted as Input in the todo-item.components.ts file -->
   <h5 [ngClass]="{ strike: !todo.active }">{{ todo.title }}</h5>
   <p [ngClass]="{ strike: !todo.active }">{{ todo.desc }}</p>
@@ -12,5 +12,6 @@
     />
     <label class="form-check-label" for="todo{{ i }}">Done</label>
   </div>
-  <button class="btn btn-sm btn-danger" (click)="onClick(todo)">Delete</button>
+  <button class="btn btn-sm btn-danger my-3" (click)="onClick(todo)">Delete</button>
 </div>
+

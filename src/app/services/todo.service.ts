@@ -6,7 +6,8 @@ import { Todo } from "../Todo"
 })
 export class TodoService {
 
-  todos:Todo[];
+  todos: Todo[];
+  count: number;
 
   constructor() { }
 
@@ -27,5 +28,15 @@ export class TodoService {
     const index = this.todos.indexOf(todo);
     this.todos[index].active = !this.todos[index].active;
     localStorage.setItem("todos", JSON.stringify(this.todos));
+  }
+
+  remainingTodos(): number {
+    this.count = 0;
+    this.todos.forEach((todo) => {
+      if (todo.active == true) {
+        this.count++;
+      }
+    })
+    return this.count;
   }
 }

@@ -43,13 +43,20 @@ export class TodosComponent implements OnInit {
 
   addTodo(todo: Todo) {
     this.todoService.addTodo(todo);
+    this.remainingTodos();
   }
 
   deleteTodo(todo: Todo) {
     this.todoService.deleteTodo(todo);
+    this.remainingTodos();
   }
 
   toggleTodo(todo: Todo) {
     this.todoService.toggleTodo(todo);
+    this.remainingTodos();
+  }
+
+  remainingTodos() {
+    return this.todoService.remainingTodos();
   }
 }

@@ -4,6 +4,7 @@
   <!-- whenever a "todoAdd" event is fired, run "addTodo()" -->
 
   <h4>Your Todos</h4>
+  <hr>
   <div *ngIf="todoService.todos.length === 0; else elseBlock">No Todos to display</div>
   <ng-template #elseBlock>
     <div *ngFor="let todo of todoService.todos; index as i" @fade>
@@ -15,4 +16,8 @@
       ></app-todo-item>
     </div>
   </ng-template>
+
+  <button type="button" class="btn btn-secondary" style="margin: 20px 0px;">
+    Remaining Tasks <span class="badge bg-danger">{{todoService.remainingTodos()}}</span>
+  </button>
 </div>
