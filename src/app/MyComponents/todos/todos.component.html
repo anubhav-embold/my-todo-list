@@ -11,8 +11,8 @@
       <app-todo-item
         [todo]="todo"
         [i]="i"
-        (todoDelete)="todoService.deleteTodo($event)"
-        (todoCheckbox)="todoService.toggleTodo($event)"
+        (todoDelete)="deleteTodo($event)"
+        (todoCheckbox)="toggleTodo($event)"
       ></app-todo-item>
     </div>
   </ng-template>

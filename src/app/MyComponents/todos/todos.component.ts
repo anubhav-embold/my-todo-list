@@ -26,15 +26,18 @@ export class TodosComponent implements OnInit {
   localItem: string;
   
   constructor(public todoService: TodoService) { 
+    this.todoService.getAllTodos().subscribe( todos => {
+      this.todoService.todos = todos;
+    });
+
+    // this.localItem = localStorage.getItem("todos")!;
     
-    this.localItem = localStorage.getItem("todos")!;
-    
-    if (this.localItem == null) {
-      this.todoService.todos = [];
-    }
-    else {
-      this.todoService.todos = JSON.parse(this.localItem);
-    }
+    // if (this.localItem == null) {
+    //   this.todoService.todos = [];
+    // }
+    // else {
+    //   this.todoService.todos = JSON.parse(this.localItem);
+    // }
 
   }
 
@@ -42,17 +45,29 @@ export class TodosComponent implements OnInit {
   }
 
   addTodo(todo: Todo) {
-    this.todoService.addTodo(todo);
+    this.todoService.addTodo(todo).subscribe( todo => {
+      this.todoService.todos.push(todo);
+    })
+    
     this.remainingTodos();
   }
 
   deleteTodo(todo: Todo) {
-    this.todoService.deleteTodo(todo);
+    this.todoService.deleteTodo(todo).subscribe( response => {
+      const index = this.todoService.todos.indexOf(todo);
+      this.todoService.todos.splice(index, 1);
+    })
+
+    // this.todoService.deleteTodo(todo);
     this.remainingTodos();
   }
 
   toggleTodo(todo: Todo) {
-    this.todoService.toggleTodo(todo);
+    this.todoService.toggleTodo(todo).subscribe( response => {
+      console.log(response);
+    })
+
+    // this.todoService.toggleTodo(todo);
     this.remainingTodos();
   }
 

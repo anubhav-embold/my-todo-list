@@ -1,7 +1,7 @@
 <div class="my-3" style="border-bottom: 2px solid;">
   <!-- "todo.title" & "todo.desc" needs to accepted as Input in the todo-item.components.ts file -->
   <h5 [ngClass]="{ strike: !todo.active }">{{ todo.title }}</h5>
-  <p [ngClass]="{ strike: !todo.active }">{{ todo.desc }}</p>
+  <p [ngClass]="{ strike: !todo.active }">{{ todo.description }}</p>
   <div class="form-check">
     <input
       type="checkbox"

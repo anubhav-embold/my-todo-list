@@ -23,7 +23,7 @@ export class AddTodoComponent implements OnInit {
     const todo = {
       sno: 8,
       title: this.title, // title & desc values are coming from the form input in the "add-toodo.component.html" file
-      desc: this.desc,
+      description: this.desc,
       active: true
     }
     // need to emit the event from here as we don't have access to the "todos" array

@@ -3,6 +3,6 @@
 export class Todo{
     sno: number
     title: string
-    desc: string
+    description: string
     active: boolean
 }
