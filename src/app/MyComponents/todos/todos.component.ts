@@ -46,7 +46,7 @@ export class TodosComponent implements OnInit {
     this.addAlert = true;
     setTimeout(() => {
       this.addAlert = false;
-    }, 2000);
+    }, 2500);
   }
 
   deleteTodo(todo: Todo) {
@@ -61,7 +61,7 @@ export class TodosComponent implements OnInit {
     this.deleteAlert = true;
     setTimeout(() => {
       this.deleteAlert = false;
-    }, 2000);
+    }, 2500);
   }
 
   toggleTodo(todo: Todo) {

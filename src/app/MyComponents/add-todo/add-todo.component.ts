@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Todo } from 'app/Todo';
 
 @Component({
@@ -13,6 +14,7 @@ export class AddTodoComponent implements OnInit {
   desc:string;
 
   @Output() todoAdd: EventEmitter<Todo> = new EventEmitter(); // will be handled in todos.components.ts
+  @ViewChild('form') todoForm: NgForm;
 
   constructor() { }
 
