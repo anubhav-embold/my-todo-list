@@ -17,12 +17,6 @@ export class TodoService {
     return this.http.get<Todo[]>('http://localhost:5000/todos');
   }
 
-  // addTodo(todo: Todo) {
-  //   // console.log(todo);
-  //   this.todos.push(todo);
-  //   localStorage.setItem("todos", JSON.stringify(this.todos));
-  // }
-
   addTodo(todo: Todo) {
     return this.http.post<Todo>('http://localhost:5000/todos', {
       "title": todo.title,
@@ -30,23 +24,10 @@ export class TodoService {
       "active": todo.active
     });
   }
-  
-  // deleteTodo(todo: Todo) {
-  //   // console.log(todo);
-  //   const index = this.todos.indexOf(todo);
-  //   this.todos.splice(index, 1);
-  //   localStorage.setItem("todos", JSON.stringify(this.todos));
-  // }
 
   deleteTodo(todo: Todo) {
     return this.http.delete('http://localhost:5000/todos/'+todo.sno);
   }
-
-  // toggleTodo(todo: Todo) {
-  //   const index = this.todos.indexOf(todo);
-  //   this.todos[index].active = !this.todos[index].active;
-  //   localStorage.setItem("todos", JSON.stringify(this.todos));
-  // }
 
   toggleTodo(todo: Todo) {
     const index = this.todos.indexOf(todo);

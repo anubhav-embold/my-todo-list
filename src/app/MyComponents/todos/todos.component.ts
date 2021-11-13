@@ -23,22 +23,13 @@ import {Todo} from "../../Todo"
 })
 export class TodosComponent implements OnInit {
   
-  localItem: string;
+  addAlert: boolean = false;
+  deleteAlert: boolean = false;
   
   constructor(public todoService: TodoService) { 
     this.todoService.getAllTodos().subscribe( todos => {
       this.todoService.todos = todos;
     });
-
-    // this.localItem = localStorage.getItem("todos")!;
-    
-    // if (this.localItem == null) {
-    //   this.todoService.todos = [];
-    // }
-    // else {
-    //   this.todoService.todos = JSON.parse(this.localItem);
-    // }
-
   }
 
   ngOnInit(): void {
@@ -50,6 +41,12 @@ export class TodosComponent implements OnInit {
     })
     
     this.remainingTodos();
+
+    // automatically disappearing alert
+    this.addAlert = true;
+    setTimeout(() => {
+      this.addAlert = false;
+    }, 2000);
   }
 
   deleteTodo(todo: Todo) {
@@ -58,8 +55,13 @@ export class TodosComponent implements OnInit {
       this.todoService.todos.splice(index, 1);
     })
 
-    // this.todoService.deleteTodo(todo);
     this.remainingTodos();
+
+    // automatically disappearing alert
+    this.deleteAlert = true;
+    setTimeout(() => {
+      this.deleteAlert = false;
+    }, 2000);
   }
 
   toggleTodo(todo: Todo) {
@@ -67,7 +69,6 @@ export class TodosComponent implements OnInit {
       console.log(response);
     })
 
-    // this.todoService.toggleTodo(todo);
     this.remainingTodos();
   }
 
